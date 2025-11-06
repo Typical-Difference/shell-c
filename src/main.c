@@ -17,11 +17,11 @@ int main(int argc, char *argv[]) {
     command[strcspn(command, "\n")] = '\0'; // Remove the last new line character after user inputs ENTER
 
     //print error for invalid messages
-    if(strncmp("exit", command, 4) && isdigit(command[4] - ' ')){
+    if(strncmp("exit 0", command, 4) || strncmp("exit 1", command, 4)){
       running_flag = 0;
     }
     else{
-      printf("%s: command not found", command);
+      printf("%s: command not found\n", command);
     }
   }
   
