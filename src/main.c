@@ -5,6 +5,8 @@
 
 int main(int argc, char *argv[]) {
   int running_flag = 1;
+  char *valid_commands[] = {"echo", "type", "exit"};
+  int valid_commands_size = 3;
 
   while(running_flag){
     // Flush after every printf
@@ -24,6 +26,22 @@ int main(int argc, char *argv[]) {
       char echoed_string[1019];
       strncpy(echoed_string, command + 5, 1019);
       printf("%s\n", echoed_string);
+    }
+    else if(!(strncmp(command, "type ", 5))){
+      char argument[1019];
+      strncpy(argument, command + 5, 1019);
+      int match_found = 0;
+      for(int i = 0; i < valid_commands_size; i++){
+        if(!strcmp(argument, valid_commands[i])){
+          match_found = 1;
+        }
+      }
+      if(match_found){
+        printf("%s is a shell builtin\n", argument);
+      }
+      else{
+        printf("%s: not found\n", argument);
+      }
     }
     else{
       printf("%s: command not found\n", command);
