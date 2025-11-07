@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
     command[strcspn(command, "\n")] = '\0'; // Remove the last new line character after user inputs ENTER
 
     //print error for invalid messages
-    if(strncmp("exit 0", command, 4) || strncmp("exit 1", command, 4)){
+    if(!strncmp(command, "exit 0", 6) || !strncmp(command, "exit 1", 6)){ //strncmp returns 0 if strings are equal
       running_flag = 0;
     }
     else{
