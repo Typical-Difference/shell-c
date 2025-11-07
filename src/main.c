@@ -20,6 +20,11 @@ int main(int argc, char *argv[]) {
     if(!strncmp(command, "exit 0", 6) || !strncmp(command, "exit 1", 6)){ //strncmp returns 0 if strings are equal
       running_flag = 0;
     }
+    else if(!(strncmp(command, "echo ", 5))){
+      char echoed_string[1019];
+      strncpy(echoed_string, command + 5, 1019);
+      printf("%s\n", echoed_string);
+    }
     else{
       printf("%s: command not found\n", command);
     }
